@@ -1,0 +1,53 @@
+public class Prakticne1{
+	public static void main(String [] args){
+    	
+    	NizFibonaci nitF = new NizFibonaci();
+    	Thread t2 = new Thread(nitF);
+    	t2.start();
+    	
+    	NizKvadrati nitK = new NizKvadrati();
+    	Thread t1 = new Thread(nitK);
+    	t1.start();
+    	
+    	while(!"kraj".equalsIgnoreCase(Svetovid.in.readLine())){
+    	}
+    	t1.interrupt();
+    	t2.intrrupt();
+    
+    }
+}
+
+class NizFibonaci implements Runnable{
+  	public int n;
+  
+  	public NizFibonaci(int n){
+	   this.n = n;
+	}
+ 
+  public void run(){
+  	  int f2;
+      int f0=0;
+      int f1=1;  	
+      System.out.println(f0 +"f");
+      System.out.println(f1 +"f");
+      for(int i=2; i<=n && interrputed(); i++){
+			System.out.println(f2 = f1 + f0);
+			f1 = f0;
+			f0 = f1;
+	  }
+  }
+}
+ 
+class NizKvadrati implements Runnable{
+	int n;
+	
+	public NizKvadrati(int n){
+		this.n = n;
+	}
+	
+	public void run(){
+		for(int i=1; i<=n && interrupted(); i++){
+			System.out.println(i*i + "k");
+		}
+	}
+}
